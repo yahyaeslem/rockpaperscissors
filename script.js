@@ -3,7 +3,7 @@ console.log("Rock Paper SCissors");
 function getComputerChoice (){
   let i = Math.random () * 100 ;
    if (i< 33){
-     i = " rock"
+     i = "rock"
    }
    else if ( i> 33  && i < 66){
      i = "scissors"
@@ -19,69 +19,70 @@ function getComputerChoice (){
 function playerSelection(){
 return prompt("Please type one of these option : Rock , Paper , Scissors").toLowerCase();
 }
+let losts = 0;
+let wins = 0;
+let draw = 0;
 // Player vs Computer Section
 function singleRoundRPS(userChoice, computerChoice){
-
+ 
+  
     if (userChoice == "rock" &&   computerChoice == "scissors"){
+      
+       wins ++ ;
       return "You Win!Rock beats scissors" ;  
     }
     else if (userChoice == "rock" && computerChoice == "paper")
     {
+      losts++;
       return "You Lose !Paper beats rock" ;
     }
     else if (userChoice == "rock" && computerChoice == "rock")
     {
+      draw++;
       return "It is DRAW!" ;
     }
     else if (userChoice == "paper" && computerChoice == "scissors"){
+      losts ++;
       return "You Lose!Scissors beats paper" ;
     }
     else if (userChoice == "paper" && computerChoice == "paper"){
+      draw ++;
       return "It is DRAW" ;
     }
     else if (userChoice == "paper" && computerChoice == "rock"){
+      wins ++;
       return "You Win!Paper beats rock" ;
     }
     else if (userChoice == "scissors" && computerChoice == "scissors"){
+      draw ++;
       return "It is draw";
     }
     else if (userChoice == "scissors" && computerChoice == "paper"){
+      wins ++;
       return "You Win!Scissors beats paper" ;
     }
     else if (userChoice == "scissors" && computerChoice == "rock"){
+      losts ++;
       return "You Lose!Rock beats scissors";
     }
     
      
 }
-const userChoice = playerSelection()
-const computerChoice = getComputerChoice()
+//let playerWins = wins;
+//let playerDraw = draw;
+//let playerLost = losts;//
+
 //console.log(singleRoundRPS(userChoice, computerChoice));
 // Game Round Count Section
 function game(){
-  let losts ;
-  let wins ;
-  let draw;
-  for (let i = 0; i < 5; i++) {
-  const userChoice = playerSelection()
-  const computerChoice = getComputerChoice()
+ 
+  for (let i = 1; i < 6; i++) {
+  const userChoice = playerSelection();
+  const computerChoice = getComputerChoice();
+  singleRoundRPS(userChoice, computerChoice);
   console.log (i +"."+ "ROUND ");
-  let result = singleRoundRPS(userChoice,computerChoice);
-  
-    if (result.charAt(2) == ''){
-      draw += draw;
-      
-    }
-    else if (result.charAt(4) == 'W'){
-      wins+= wins
-      
-    }
-    else if ( result.charAt(4) == 'L') {
-      losts+= losts
-      
-    }
-   
-    return console.log( "Draw =" + draw + "Wins = " + wins +"Losts = " + losts) ; 
+  console.log( "Draw = " + draw + " " + "Wins = " + wins +" " + "Losts = " + losts) ;
+
  }
  
 
