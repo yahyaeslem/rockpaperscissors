@@ -16,9 +16,10 @@ function getComputerChoice (){
 }
 
 // Player choice section
-function playerSelection(){
-return prompt("Please type one of these option : Rock , Paper , Scissors").toLowerCase();
-}
+// function playerSelection(){
+// return prompt("Please type one of these option : Rock , Paper , Scissors").toLowerCase();
+
+
 let losts = 0;
 let wins = 0;
 let draw = 0;
@@ -29,12 +30,12 @@ function singleRoundRPS(userChoice, computerChoice){
     if (userChoice == "rock" &&   computerChoice == "scissors"){
       
        wins ++ ;
-      return "You Win!Rock beats scissors" ;  
+      return "You Win!Rock beats scissors!" ;  
     }
     else if (userChoice == "rock" && computerChoice == "paper")
     {
       losts++;
-      return "You Lose !Paper beats rock" ;
+      return "You Lose !Paper beats rock!" ;
     }
     else if (userChoice == "rock" && computerChoice == "rock")
     {
@@ -43,48 +44,76 @@ function singleRoundRPS(userChoice, computerChoice){
     }
     else if (userChoice == "paper" && computerChoice == "scissors"){
       losts ++;
-      return "You Lose!Scissors beats paper" ;
+      return "You Lose!Scissors beats paper!" ;
     }
     else if (userChoice == "paper" && computerChoice == "paper"){
       draw ++;
-      return "It is DRAW" ;
+      return "It is DRAW!" ;
     }
     else if (userChoice == "paper" && computerChoice == "rock"){
       wins ++;
-      return "You Win!Paper beats rock" ;
+      return "You Win!Paper beats rock!" ;
     }
     else if (userChoice == "scissors" && computerChoice == "scissors"){
       draw ++;
-      return "It is draw";
+      return "It is DRAW!";
     }
     else if (userChoice == "scissors" && computerChoice == "paper"){
       wins ++;
-      return "You Win!Scissors beats paper" ;
+      return  "You Win!Scissors beats paper!" ;
     }
     else if (userChoice == "scissors" && computerChoice == "rock"){
       losts ++;
-      return "You Lose!Rock beats scissors";
+      return  "You Lose!Rock beats scissors!";
     }
     
      
 }
-//let playerWins = wins;
-//let playerDraw = draw;
-//let playerLost = losts;//
+
 
 //console.log(singleRoundRPS(userChoice, computerChoice));
 // Game Round Count Section
-function game(){
+// function game(){
  
-  for (let i = 1; i < 6; i++) {
-  const userChoice = playerSelection();
-  const computerChoice = getComputerChoice();
-  singleRoundRPS(userChoice, computerChoice);
-  console.log (i +"."+ "ROUND ");
-  console.log( "Draw = " + draw + " " + "Wins = " + wins +" " + "Losts = " + losts) ;
+//   for (let i = 1; i < 6; i++) {
+//   const userChoice = playerSelection();
+//   const computerChoice = getComputerChoice();
+//   singleRoundRPS(userChoice, computerChoice);
+//   console.log (i +"."+ "ROUND ");
+//   console.log( "Draw = " + draw + " " + "Wins = " + wins +" " + "Losts = " + losts) ;
 
- }
+//  }
  
 
-}
-game();
+// }
+// game();
+const div = document.querySelector('#result');
+const buttons =document.querySelectorAll('button');
+const player= document.querySelector('#Player');
+const computer  = document.querySelector('#Computer');
+
+
+// const rock = document.querySelector('.rock')
+// const paper = document.querySelector('.paper');
+// const scissors = document.querySelector('.scissors');
+buttons.forEach((button) => {
+  button.addEventListener('click',()=> {
+    if(wins === 5 || losts === 5){
+      
+      if(wins>losts){
+        div.textContent = "Congratulations!! YOU WON !!"
+      }
+      else if(losts>wins){
+        div.textContent = "Super Intelligent Computer WON"
+      }
+     losts = 0 ;
+     wins = 0;
+    }
+    div.textContent =  singleRoundRPS(button.className,getComputerChoice());
+    player.textContent = "YOU:" + wins
+    computer.textContent = "COMPUTER :" +losts
+    
+  });
+  
+});
+
