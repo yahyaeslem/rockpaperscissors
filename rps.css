@@ -86,11 +86,11 @@ ul{
    
 }
 #rock{
-background-image: url(../images/rock.png);
+background-image: url(../rockpaperscissors/images/rock.png);
 }#paper{
-background-image: url(../images/paper.png);
+background-image: url(../rockpaperscissors/images/paper.png);
 }#scissors{
-background-image: url(../images/scissors.png);
+background-image: url(../rockpaperscissors/images/scissors.png);
 }
 #result{
   display: flex;
