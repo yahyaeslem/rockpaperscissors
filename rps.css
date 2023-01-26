@@ -36,8 +36,7 @@ h1{
     
 }
 button:hover{
-    width: 102px;
-    height: 102px;
+   
     border-color:rgb(245, 245, 242);
     border-width: 2px;
     transition: 0.1s;
